@@ -46,3 +46,24 @@ function bai5() {
     }
     document.getElementById('output2').innerHTML = arr.join(' ')
 }
+
+function bai6() {
+    let a = document.getElementById('input3').value
+    let str = a.split(' ')
+    var array = []
+    console.log(str)
+    for (i = 0; i < str.length; i++) {
+        var num = str[i].length
+        array.push(num)
+    }
+    let max = array[0];
+    let max_index = 0;
+    for (let i = 0; i < array.length; ++i) {
+        if (max < array[i]) { //Thay đổi giá trị lớn nhất nếu tìm ra số lớn hơn
+            max = array[i];
+            max_index = i;
+        }
+    }
+    console.log("max= ", str[max_index]);
+    document.getElementById('output3').innerHTML = str[max_index]
+}
