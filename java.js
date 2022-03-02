@@ -26,3 +26,23 @@ function bai3() {
     cell2.innerHTML = 'text'
 
 }
+
+function bai4() {
+    let a = document.getElementById('input').value
+    let str = a.split('')
+    document.getElementById('output').innerHTML = str.sort().join('')
+}
+
+function bai5() {
+    let a = document.getElementById('input2').value
+    let str = a.split(' ')
+    var arr = []
+    console.log(str)
+    for (i = 0; i < str.length; i++) {
+        var s = str[i]
+        const [first, ...rest] = s;
+        var result = [first.toUpperCase(), ...rest].join('');
+        arr.push(result)
+    }
+    document.getElementById('output2').innerHTML = arr.join(' ')
+}
