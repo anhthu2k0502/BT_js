@@ -3,7 +3,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: monospace;
 }
 body{
     display: flex;
@@ -34,4 +34,8 @@ button{
   font-size: 20px;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+span{
+    margin-right: 10px;
 }
