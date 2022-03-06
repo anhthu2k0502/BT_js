@@ -8,10 +8,11 @@
 body{
     display: flex;
     flex-direction: column;
-    
+
 }
 button{
-    width: 50px;
+    width: auto;
+    padding: 15px;
     background-color: cadetblue;
     border: none;
 }
