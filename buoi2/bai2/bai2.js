@@ -16,6 +16,7 @@ var func = document.getElementById('start')
 var pause = true
 func.addEventListener('click', function () {
 
+
     pause = !pause
 
     if (pause == false) {
@@ -31,6 +32,8 @@ func.addEventListener('click', function () {
 })
 
 document.getElementById('clear').onclick = function () {
+    func.innerText = 'Start'
+    pause = true
     clearInterval(interval)
     giay = arr[0] || 0
     chucgiay = arr[1] || 0
