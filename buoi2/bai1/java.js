@@ -4,17 +4,26 @@ var giay = 0
 var miligiay = 0
 var interval
 
+var pause = true
+var func = document.getElementById('start')
 
-function Start() {
-    clearInterval(interval)
-    interval = setInterval(startTime, 10)
-}
+func.addEventListener('click', function () {
+    pause = !pause
+    if (pause == false) {
+        interval = setInterval(startTime, 10)
+        func.innerText = 'Pause'
+    }
+    else {
+        clearInterval(interval)
+        func.innerText = 'Continute'
+    }
+})
 
-function Stop() {
-    clearInterval(interval)
-}
+document.getElementById('reset').addEventListener('click', Reset)
 
 function Reset() {
+    pause = true
+    func.innerText = 'Start'
     document.getElementById('milliseconds').innerHTML = '00'
     document.getElementById('seconds').innerHTML = '00'
     document.getElementById('minutes').innerHTML = '00'
