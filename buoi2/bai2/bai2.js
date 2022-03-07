@@ -1,87 +1,264 @@
-var miligiay = 0
 var giay = 0
+var chucgiay = 0
 var phut = 0
+var chucphut = 0
 var gio = 0
+var chucgio = 0
+var ngay = 0
+var chucngay = 0
+var interval
 const array = [];
-var playmiligiay = document.getElementById('milisecond')
-var playgiay = document.getElementById('second')
-var playphut = document.getElementById('minute')
-var playgio = document.getElementById('hour')
+const arr = []
 const x = document.querySelectorAll(".btn");
 
-console.log("chieu dai: " + x.length)
+var func = document.getElementById('start')
+
+var pause = true
+func.addEventListener('click', function () {
+
+    pause = !pause
+
+    if (pause == false) {
+        console.log('hi')
+        interval = setInterval(countdown, 1000)
+        func.innerText = 'Pause'
+    }
+    else {
+        console.log('hehe')
+        clearInterval(interval)
+        func.innerText = 'Continute'
+    }
+})
+
+document.getElementById('clear').onclick = function () {
+    clearInterval(interval)
+    giay = arr[0] || 0
+    chucgiay = arr[1] || 0
+    phut = arr[2] || 0
+    chucphut = arr[3] || 0
+    gio = arr[4] || 0
+    chucgio = arr[5] || 0
+    ngay = arr[6] || 0
+    chucngay = arr[7] || 0
+    if (chucgiay > 5) {
+        chucgiay -= 6
+        phut += 1
+    }
+    if (phut > 9) {
+        chucphut += 1
+        phut = 0
+    }
+    if (chucphut > 5) {
+        chucphut -= 6
+        gio += 1
+    }
+    if (gio > 9) {
+        chucgio += 1
+        gio = 0
+    }
+    if (chucgio > 5) {
+        chucgio -= 6
+        ngay += 1
+    }
+    if (ngay > 9) {
+        chucngay += 1
+        ngay = 0
+    }
+    document.getElementById('giay').innerText = giay
+    document.getElementById('chucgiay').innerText = chucgiay
+    document.getElementById('phut').innerText = phut
+    document.getElementById('chucphut').innerText = chucphut
+    document.getElementById('gio').innerText = gio
+    document.getElementById('chucgio').innerText = chucgio
+    document.getElementById('ngay').innerText = ngay
+    document.getElementById('chucngay').innerText = chucngay
+
+
+}
+
+
+
+function start() {
+    interval = setInterval(countdown, 1000)
+
+}
+function countdown() {
+    giay--
+    if (giay < 0) {
+        chucgiay -= 1
+        giay = 9
+    }
+    if (chucgiay < 0) {
+        chucgiay = 5
+        giay = 9
+        phut -= 1
+    }
+    if (phut < 0) {
+        chucphut -= 1
+        phut = 9
+    }
+    if (chucphut < 0) {
+        chucphut = 5
+        phut = 9
+        gio -= 1
+    }
+    if (gio < 0) {
+        chucgio -= 1
+        gio = 9
+    }
+    if (chucgio < 0) {
+        chucgio = 5
+        gio = 9
+        ngay -= 1
+    }
+    if (ngay < 0) {
+        chucngay -= 1
+        ngay = 9
+    }
+    if (chucngay < 0) {
+        clearInterval(interval)
+    }
+    document.getElementById('giay').innerText = giay
+    document.getElementById('chucgiay').innerText = chucgiay
+    document.getElementById('phut').innerText = phut
+    document.getElementById('chucphut').innerText = chucphut
+    document.getElementById('gio').innerText = gio
+    document.getElementById('chucgio').innerText = chucgio
+    document.getElementById('ngay').innerText = ngay
+    document.getElementById('chucngay').innerText = chucngay
+    document.getElementById('giay').innerText = giay
+    document.getElementById('chucgiay').innerText = chucgiay
+    document.getElementById('phut').innerText = phut
+    document.getElementById('chucphut').innerText = chucphut
+    document.getElementById('gio').innerText = gio
+    document.getElementById('chucgio').innerText = chucgio
+    document.getElementById('ngay').innerText = ngay
+    document.getElementById('chucngay').innerText = chucngay
+
+}
 
 x.forEach(myFunction)
 
 function myFunction(item, index) {
     item.onclick = function () {
-        array.push(index)
-        if (array.length == 1) {
-            miligiay += array[0]
-            playmiligiay.innerHTML = '0' + array[0]
-        }
-        if (array.length == 2) {
-            miligiay = array[1] * 10 + array[0]
-            playmiligiay.innerHTML = array[1] + "" + array[0]
-        }
-        if (array.length == 3) {
-            giay += array[2]
-            playgiay.innerHTML = '0' + array[2]
+        array.unshift(index)
+        arr.unshift(index)
+        giay = array[0] || 0
+        chucgiay = array[1] || 0
+        phut = array[2] || 0
+        chucphut = array[3] || 0
+        gio = array[4] || 0
+        chucgio = array[5] || 0
+        ngay = array[6] || 0
+        chucngay = array[7] || 0
+        document.getElementById('giay').innerText = array[0] || 0
+        document.getElementById('chucgiay').innerText = array[1] || 0
+        document.getElementById('phut').innerText = array[2] || 0
+        document.getElementById('chucphut').innerText = array[3] || 0
+        document.getElementById('gio').innerText = array[4] || 0
+        document.getElementById('chucgio').innerText = array[5] || 0
+        document.getElementById('ngay').innerText = array[6] || 0
+        document.getElementById('chucngay').innerText = array[7] || 0
 
-        }
-        if (array.length == 4) {
-            giay = array[3] * 10 + array[2]
-            playgiay.innerHTML = array[3] + "" + array[2]
-        }
-        if (array.length == 5) {
-            phut += array[4]
-            playphut.innerHTML = '0' + array[4]
-
-        }
-        if (array.length == 6) {
-            phut = array[5] * 10 + array[4]
-            playphut.innerHTML = array[5] + "" + array[4]
-        }
-        if (array.length == 7) {
-            gio += array[6]
-            playgio.innerHTML = '0' + array[6]
-        }
-        if (array.length == 8) {
-            gio = array[7] * 10 + array[6]
-            playgio.innerHTML = array[7] + "" + array[6]
-        }
-        if (array.length > 8) {
-            alert('không thể nhập tiếp')
-        }
-
-        console.log(array)
 
     }
-
 }
+
 
 function set() {
 
-    if (giay > 60) {
-        phut = phut + 1
-        giay = giay - 60
+    if (chucgiay > 5) {
+        chucgiay -= 6
+        phut += 1
     }
-    if (phut > 60) {
-        gio = gio + 1
-        phut = phut - 60
+    if (phut > 9) {
+        chucphut += 1
+        phut = 0
     }
+    if (chucphut > 5) {
+        chucphut -= 6
+        gio += 1
+    }
+    if (gio > 9) {
+        chucgio += 1
+        gio = 0
+    }
+    if (chucgio > 5) {
+        chucgio -= 6
+        ngay += 1
+    }
+    if (ngay > 9) {
+        chucngay += 1
+        ngay = 0
+    }
+    document.getElementById('giay').innerText = giay
+    document.getElementById('chucgiay').innerText = chucgiay
+    document.getElementById('phut').innerText = phut
+    document.getElementById('chucphut').innerText = chucphut
+    document.getElementById('gio').innerText = gio
+    document.getElementById('chucgio').innerText = chucgio
+    document.getElementById('ngay').innerText = ngay
+    document.getElementById('chucngay').innerText = chucngay
 
-    playmiligiay.innerHTML = miligiay
-    playgiay.innerHTML = giay
-    playphut.innerHTML = phut
-    playgio.innerHTML = gio
 
 }
+
+
 
 function start() {
+    interval = setInterval(countdown, 1000)
 
 }
+function countdown() {
+    giay--
+    if (giay < 0) {
+        chucgiay -= 1
+        giay = 9
+    }
+    if (chucgiay < 0) {
+        chucgiay = 5
+        giay = 9
+        phut -= 1
+    }
+    if (phut < 0) {
+        chucphut -= 1
+        phut = 9
+    }
+    if (chucphut < 0) {
+        chucphut = 5
+        phut = 9
+        gio -= 1
+    }
+    if (gio < 0) {
+        chucgio -= 1
+        gio = 9
+    }
+    if (chucgio < 0) {
+        chucgio = 5
+        gio = 9
+        ngay -= 1
+    }
+    if (ngay < 0) {
+        chucngay -= 1
+        ngay = 9
+    }
+    if (chucngay < 0) {
+        clearInterval(interval)
+    }
 
+
+    document.getElementById('giay').innerText = giay
+    document.getElementById('chucgiay').innerText = chucgiay
+    document.getElementById('phut').innerText = phut
+    document.getElementById('chucphut').innerText = chucphut
+    document.getElementById('gio').innerText = gio
+    document.getElementById('chucgio').innerText = chucgio
+    document.getElementById('ngay').innerText = ngay
+    document.getElementById('chucngay').innerText = chucngay
+
+
+
+}
 
 
 
